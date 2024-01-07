@@ -5,13 +5,14 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import sample.cafekiosk.spring.domain.BaseEntity;
 import sample.cafekiosk.spring.domain.order.Order;
 import sample.cafekiosk.spring.domain.product.Product;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class OrderProduct {
+public class OrderProduct extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,7 +24,7 @@ public class OrderProduct {
     private Product product;
 
     @Builder
-    private  OrderProduct(Order order, Product product) {
+    public OrderProduct(Order order, Product product) {
         this.order = order;
         this.product = product;
     }
